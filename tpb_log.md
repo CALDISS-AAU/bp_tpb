@@ -36,5 +36,44 @@
 
 #### 2022-03-28
 
-- Converted labeled tweets into combined file with label-variabel: `tpb_tweets_simple_labels_20220308.csv`
-- 
+- Converted labelled tweets into combined file with label-variabel: `tpb_tweets_simple_labels_20220308.csv`
+- Stored labelled as json records: `tpb_tweets_simple-filter_labelled_20220308.json`
+- Created filtered set based on updated filter conditions (See document "Filtering tweets for Tracking Pandemic Borderscapes_20220328.docx")
+    - Filtered set: `tpb_tweets_filtered_20220328.xlsx`
+    - Set created using `scripts/create_filteret-set_prodigy-set01_20220328.py`
+    - Manual corrections:
+        - Added filter in Excel
+        - Column width
+        - id-column as number
+        - tweet_link clickable using macro:
+        ```
+        Sub ConvertTextURLsToHyperlinks()
+            Dim Cell As Range
+            For Each Cell In Intersect(Selection, ActiveSheet.UsedRange)
+                If Cell <> "" Then
+                    ActiveSheet.Hyperlinks.Add Cell, Cell.Value
+                End If
+            Next
+        End Sub
+        ```
+- Created set for annotating: `data/prodigy/tpb_tagset01.json`
+    - Excluded retweets
+    - Did *not* exclude already labelled tweets
+    
+**Set up first instance of tagging**
+- Initiated manual text classification instance (https://prodi.gy/docs/text-classification)
+- Using `data/prodigy/tpb_tagset01.json`
+- Running with `feed_overlap: True` to review annotations later
+- Set up using bash `tpb_textcat.sh`:
+```
+#!/bin/bash
+
+source prodigy/bin/activate
+
+export PRODIGY_PORT="8080"
+export PRODIGY_BASIC_AUTH_USER=""
+export PRODIGY_BASIC_AUTH_PASS=""
+export PRODIGY_ALLOWED_SESSIONS="eva,tamy,kristian,signe"
+
+nohup  prodigy textcat.manual tpb_cat "./tpb/data/tpb_tagset01.json" --label "Physical stuckness","Surrounding precarity and vulnerabilities","Blocked or derailed mobilities","Pandemic precarity","New mobilities","Other" --exclusive &> nohup_tpb-cat_20220328.out &
+```
