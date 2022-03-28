@@ -1,0 +1,3 @@
+*.ipynb_checkipoints*
+*sparkmonitor_*
+data/
