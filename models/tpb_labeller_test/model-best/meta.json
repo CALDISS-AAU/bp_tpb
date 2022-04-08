@@ -1,0 +1,77 @@
+{
+  "lang":"en",
+  "name":"pipeline",
+  "version":"0.0.0",
+  "spacy_version":">=3.2.1,<3.3.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"800737b41",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null,
+    "mode":"default"
+  },
+  "labels":{
+    "textcat":[
+      "physical stuckness",
+      "surrounding precarity and vulnerabilities",
+      "blocked mobilities",
+      "pandemic precarity",
+      "new mobilities"
+    ]
+  },
+  "pipeline":[
+    "textcat"
+  ],
+  "components":[
+    "textcat"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "cats_score":0.756501545,
+    "cats_score_desc":"macro F",
+    "cats_micro_p":0.8367346939,
+    "cats_micro_r":0.7068965517,
+    "cats_micro_f":0.7663551402,
+    "cats_macro_p":0.8621212121,
+    "cats_macro_r":0.7010656011,
+    "cats_macro_f":0.756501545,
+    "cats_macro_auc":0.9444636628,
+    "cats_f_per_type":{
+      "physical stuckness":{
+        "p":1.0,
+        "r":0.9230769231,
+        "f":0.96
+      },
+      "surrounding precarity and vulnerabilities":{
+        "p":0.75,
+        "r":0.2727272727,
+        "f":0.4
+      },
+      "blocked mobilities":{
+        "p":0.8333333333,
+        "r":0.7142857143,
+        "f":0.7692307692
+      },
+      "pandemic precarity":{
+        "p":1.0,
+        "r":0.8333333333,
+        "f":0.9090909091
+      },
+      "new mobilities":{
+        "p":0.7272727273,
+        "r":0.7619047619,
+        "f":0.7441860465
+      }
+    },
+    "cats_macro_auc_per_type":0.0,
+    "textcat_loss":0.0002367047
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "labels":[
+    "physical stuckness",
+    "surrounding precarity and vulnerabilities",
+    "blocked mobilities",
+    "pandemic precarity",
+    "new mobilities"
+  ],
+  "threshold":0.5,
+  "positive_label":null
+}
