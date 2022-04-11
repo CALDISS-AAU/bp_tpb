@@ -12,6 +12,7 @@ import os
 data_dir = os.path.join('..', 'data')
 rawdata_p = os.path.join(data_dir, 'tpb_tweets_news-outlets_20211208.json')
 labelled_p = os.path.join(data_dir, 'tpb_tweets_simple-filter_labelled_20220308.json')
+out_json = os.path.join(data_dir, 'tpb_tweets_filtered_20220328.json')
 out_excel = os.path.join(data_dir, 'tpb_tweets_filtered_20220328.xlsx')
 out_tagset = os.path.join(data_dir, 'prodigy', 'tpb_tagset01.json')
 
@@ -172,6 +173,8 @@ df_combined['id'] = df_combined['id'].astype('int64')
 # Adding existing labels
 df_combined = pd.merge(df_combined, labelled_df.loc[:, ['id', 'label']], on = 'id', how = 'left').loc[:, keep_columns]
 
+# Export json
+df_combined.to_json(out_json, orient = 'records')
 
 # Export to excel
 df_combined.to_excel(out_excel, index = False)
