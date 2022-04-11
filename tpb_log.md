@@ -114,3 +114,54 @@ nohup  prodigy textcat.manual tpb_cat "./tpb/data/tpb_tagset01.json" --label "Ph
 - Manual evaluation using `notebooks/model_test.ipynb`
   - Model used like any other spacy model
   - `doc` contains `.cats` attribute for predicted label values (see https://spacy.io/api/textcategorizer)
+
+
+
+#### 2022-04-11
+
+- Creating new tagging sets based on meeting discussion
+
+  - One with the tweets matching the covid filter
+  - One without
+
+- Crated two sets: `tpb_tagset_covid01.json` and `tpb_tagset_other01.json`
+
+  - Using script: `create-prodigy-sets_apr22.py`
+
+- Shutting down previous tagging instance from march 28th 
+
+- Using new categories:
+
+  - Covid categories:
+    - Physical stuckness and Covid
+    - Pandemic precarity
+    - Blocked and derailed mobilities because of Covid
+    - New mobilities in relation to Covid
+    - Other
+  - Other/contextual categories:
+    - The backdrop of physical stuckness
+    - Existing precarity and vulnerabilities
+    - Context of blocked and derailed mobilities
+    - New mobilities and migratory routes 
+    - Other
+
+- Starting separate tagging instances using script `tpb_textcat_covid-contextual.sh`:
+
+  ```
+  source prodigy/bin/activate
+  
+  export PRODIGY_PORT="8080"
+  export PRODIGY_BASIC_AUTH_USER="tpb"
+  export PRODIGY_BASIC_AUTH_PASS="tagthetweets4days"
+  export PRODIGY_ALLOWED_SESSIONS="eva,tamy,kristian,signe"
+  
+  nohup  prodigy textcat.manual tpb_covidcat "./tpb/data/tpb_tagset_covid01.json" --label "Physical stuckness and Covid","Pandemic precarity","Blocked and derailed mobilities because of Covid","New mobilities in relation to Covid","Other" &> nohup_tpb_covid-cat_20220411.out &
+  
+  
+  export PRODIGY_PORT="8070"
+  export PRODIGY_BASIC_AUTH_USER="tpb"
+  export PRODIGY_BASIC_AUTH_PASS="tagthetweets4days"
+  export PRODIGY_ALLOWED_SESSIONS="eva,tamy,kristian,signe"
+  
+  nohup  prodigy textcat.manual tpb_contextcat "./tpb/data/tpb_tagset_other01.json" --label "The backdrop of physical stuckness","Existing precarity and vulnerabilities","Context of blocked and derailed mobilities","New mobilities and migratory routes","Other" &> nohup_tpb_context-cat_20220411.out &
+  ```
