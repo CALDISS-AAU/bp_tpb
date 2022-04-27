@@ -165,3 +165,14 @@ nohup  prodigy textcat.manual tpb_cat "./tpb/data/tpb_tagset01.json" --label "Ph
   
   nohup  prodigy textcat.manual tpb_contextcat "./tpb/data/tpb_tagset_other01.json" --label "The backdrop of physical stuckness","Existing precarity and vulnerabilities","Context of blocked and derailed mobilities","New mobilities and migratory routes","Other" &> nohup_tpb_context-cat_20220411.out &
   ```
+
+
+
+#### 2022-04-27
+
+- Checking if more labelling is needed using: `prodigy train-curve --textcat-multilabel tpb_contextcat --show-plot`
+  - NOTE: Data is *multilabelled*
+
+![image-20220427110402551](.\img\image-20220427110402551.png)
+
+- Creating script for converting prodigy format to excel file: `prodigy-format_to-excel.py`
