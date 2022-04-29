@@ -124,7 +124,7 @@ nohup  prodigy textcat.manual tpb_cat "./tpb/data/tpb_tagset01.json" --label "Ph
   - One with the tweets matching the covid filter
   - One without
 
-- Crated two sets: `tpb_tagset_covid01.json` and `tpb_tagset_other01.json`
+- Crated two sets: `tpb_tagset_covid01.json` (375 tweets) and `tpb_tagset_other01.json` (2703 tweets)
 
   - Using script: `create-prodigy-sets_apr22.py`
 
@@ -176,3 +176,74 @@ nohup  prodigy textcat.manual tpb_cat "./tpb/data/tpb_tagset01.json" --label "Ph
 ![image-20220427110402551](.\img\image-20220427110402551.png)
 
 - Creating script for converting prodigy format to excel file: `prodigy-format_to-excel.py`
+
+
+
+#### 2022-04-29
+
+**Export labelled COVID tweets**
+
+- Ending COVID tagging instance and exporting labelled COVID-tweets to excel file: `tpb_covid-tweets_labelled.xlsx`
+
+  - Using script: `prodigy-format_to-excel.py`
+  - Labelled data exported from prodigy as `tpb_covidcat_labelled_20220429.jsonl`
+  - **NOTE:** ID's in tagging sets rounded up - possible due to float point limitation in `json.dump()` - ***convert id's to strings before export in the future!***
+    - Tweet ID reconstructed from tweet_link
+  - Label names changed:
+    - Physical stuckness and Covid: Physical stuckness and Covid
+    - Pandemic precarity: Pandemic precarity
+    - Blocked and derailed mobilities because of Covid: Blocked and derailed mobilities in relation to Covid
+    - New mobilities in relation to Covid: Mobility in relation to Covid
+    - Other: Other
+  - Sorted by date (oldest to newest)
+  - tweet-links made clickable
+  - Exported as tidy: One row per label per tweet (tweets with two labels appearing twice)
+
+- **New label names:**
+
+  - In the Covid dataset:
+
+    a. Physical stuckness and Covid
+
+    b. Pandemic precarity
+
+    **c. Blocked and derailed mobilities in relation to Covid**
+
+    **d. Mobility in relation to Covid** 
+
+    e. Other
+
+  - In the contextual dataset:
+
+    a. The backdrop of physical stuckness
+
+    b. Existing precarity and vulnerabilities 
+
+    c. Context of blocked and derailed mobilities 
+
+    **d. Mobility along new and old routes** 
+
+    e. Other 
+
+
+
+**Training model**
+
+- Checking if more labelling is needed for contextual tweets using: `prodigy train-curve --textcat-multilabel tpb_contextcat --show-plot`
+
+  ![image-20220429105543052](.\img\image-20220429105543052.png)
+
+- Training model using: `prodigy train tpb_labeller --textcat-multilabel tpb_contextcat`
+
+  - Model named `tpb_labeller`
+
+
+
+**Testing `textcat.correct`**
+
+- **NOTE:** `textcat.py` (`prodigy/lib/python3.8/site-packages/prodigy/recipes`) recipe has been edited to always use "multiple" choice view (used single despite being multilabel)
+  - Created backup: `textcat_bck.py`
+- Testing `textcat.correct` recipe using: `prodigy textcat.correct tpb_contextcat_correct ./tpb/tpb_labeller/model-last "./tpb/data/tpb_tagset_other01.json" --threshold 0.8` (tpb_textcat_with-model.sh)
+- **Alternatives:**
+  - Annotate by correcting model
+  - Annotate by only correcting tweets under a certain threshold
