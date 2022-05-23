@@ -247,3 +247,19 @@ nohup  prodigy textcat.manual tpb_cat "./tpb/data/tpb_tagset01.json" --label "Ph
 - **Alternatives:**
   - Annotate by correcting model
   - Annotate by only correcting tweets under a certain threshold
+
+
+
+#### 2022-05-23
+
+**Predicting labels**
+
+- Using model `tpb_labeller` to predict labels for unlabelled tweets (unlabelled at 2022-04-29)
+- Model `tpb_labeller` added to repo
+- Exporting manually labelled data: `tpb_contextcat_20220523.jsonl`
+- Started work on notebook for predicting label: `predict_context.ipynb`
+  - Reads in labelled data and raw data
+  - Converts labelled to tidy (one row per label)
+  - Creates indicator for whether data was part of model training
+    - NOTE: Possible to discern whether data was part of training or test?
+  - Wrapper function for predicting context category
