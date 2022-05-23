@@ -36,7 +36,7 @@ with open(data_in_p, 'r') as f:
 df_in = pd.DataFrame.from_records(data)
 
 id_regex = re.compile(r'(?<=/)(\d{15,20})$')
-df_in['id'] = df_in['tweet_link'].str.extract(regex).astype('int')
+df_in['id'] = df_in['tweet_link'].str.extract(id_regex).astype('int')
 
 # tidy - one row per label
 df_in = df_in.explode('accept').reset_index(drop = True)
