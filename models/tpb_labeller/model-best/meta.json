@@ -1,0 +1,77 @@
+{
+  "lang":"en",
+  "name":"pipeline",
+  "version":"0.0.0",
+  "spacy_version":">=3.2.1,<3.3.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"800737b41",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null,
+    "mode":"default"
+  },
+  "labels":{
+    "textcat_multilabel":[
+      "Context of blocked and derailed mobilities",
+      "Other",
+      "New mobilities and migratory routes",
+      "The backdrop of physical stuckness",
+      "Existing precarity and vulnerabilities"
+    ]
+  },
+  "pipeline":[
+    "textcat_multilabel"
+  ],
+  "components":[
+    "textcat_multilabel"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "cats_score":0.8550410307,
+    "cats_score_desc":"macro AUC",
+    "cats_micro_p":0.8181818182,
+    "cats_micro_r":0.6040268456,
+    "cats_micro_f":0.694980695,
+    "cats_macro_p":0.8549450549,
+    "cats_macro_r":0.4979106858,
+    "cats_macro_f":0.583009637,
+    "cats_macro_auc":0.8550410307,
+    "cats_f_per_type":{
+      "Context of blocked and derailed mobilities":{
+        "p":0.8461538462,
+        "r":0.5789473684,
+        "f":0.6875
+      },
+      "Other":{
+        "p":1.0,
+        "r":0.1666666667,
+        "f":0.2857142857
+      },
+      "New mobilities and migratory routes":{
+        "p":0.7142857143,
+        "r":0.75,
+        "f":0.7317073171
+      },
+      "The backdrop of physical stuckness":{
+        "p":0.8,
+        "r":0.2666666667,
+        "f":0.4
+      },
+      "Existing precarity and vulnerabilities":{
+        "p":0.9142857143,
+        "r":0.7272727273,
+        "f":0.8101265823
+      }
+    },
+    "cats_macro_auc_per_type":0.0,
+    "textcat_multilabel_loss":0.0009167115
+  }
+}
