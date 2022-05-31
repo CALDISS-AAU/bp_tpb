@@ -263,3 +263,35 @@ nohup  prodigy textcat.manual tpb_cat "./tpb/data/tpb_tagset01.json" --label "Ph
   - Creates indicator for whether data was part of model training
     - NOTE: Possible to discern whether data was part of training or test?
   - Wrapper function for predicting context category
+
+
+
+#### 2022-05-31
+
+- Terminating contextcat instance (all tweets labelled)
+
+- Creating script for manually splitting data in training and test: `create-train-test.py`
+
+- Exporting labelled context-cat data (again): `tpb_contextcat_20220531.jsonl`
+
+  - `prodigy db-out tpb_contextcat > ./tpb/data/tpb_contextcat_20220531.jsonl`
+
+- Creating training set and test set using `create-train-test.py`
+
+  - `prodigy db-in tpb_contextcat_test ~/tpb/data/tpb_contextcat_test.jsonl`
+  - `prodigy db-in tpb_contextcat_train_20220531 ~/tpb/data/tpb_contextcat_train.jsonl`
+
+- Re-creating `tpb_labeller` using manual train and test: `prodigy train ~/tpb/bp_tpb/models/tpb_labeller --textcat-multilabel tpb_contextcat_train_20220531,eval:tpb_contextcat_test `
+
+  ![image-20220531145822216](.\img\image-20220531145822216.png)
+
+- Adding new version of `tpb_labeller` and training data to repo
+
+- Creating excel dataset for contextual tweets (using `predict_context.ipynb`):
+  - Ignored tweets filtered out
+  - All tweets not used for training predicted
+  - Added column for predicted label and precision
+  - Dataset: `tpb_context-tweets_labelled-predicted.xlsx`
+
+- Created two visualization for precision of label prediction (added to `output` folder in repo)
+
