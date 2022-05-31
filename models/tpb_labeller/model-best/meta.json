@@ -18,11 +18,11 @@
   },
   "labels":{
     "textcat_multilabel":[
-      "Context of blocked and derailed mobilities",
-      "Other",
-      "New mobilities and migratory routes",
+      "Existing precarity and vulnerabilities",
       "The backdrop of physical stuckness",
-      "Existing precarity and vulnerabilities"
+      "Context of blocked and derailed mobilities",
+      "New mobilities and migratory routes",
+      "Other"
     ]
   },
   "pipeline":[
@@ -35,43 +35,43 @@
 
   ],
   "performance":{
-    "cats_score":0.8550410307,
+    "cats_score":0.8461446,
     "cats_score_desc":"macro AUC",
-    "cats_micro_p":0.8181818182,
-    "cats_micro_r":0.6040268456,
-    "cats_micro_f":0.694980695,
-    "cats_macro_p":0.8549450549,
-    "cats_macro_r":0.4979106858,
-    "cats_macro_f":0.583009637,
-    "cats_macro_auc":0.8550410307,
+    "cats_micro_p":0.6982758621,
+    "cats_micro_r":0.525974026,
+    "cats_micro_f":0.6,
+    "cats_macro_p":0.6324033438,
+    "cats_macro_r":0.4561902724,
+    "cats_macro_f":0.5078984142,
+    "cats_macro_auc":0.8461446,
     "cats_f_per_type":{
-      "Context of blocked and derailed mobilities":{
-        "p":0.8461538462,
-        "r":0.5789473684,
-        "f":0.6875
-      },
-      "Other":{
-        "p":1.0,
-        "r":0.1666666667,
-        "f":0.2857142857
-      },
-      "New mobilities and migratory routes":{
-        "p":0.7142857143,
-        "r":0.75,
-        "f":0.7317073171
+      "Existing precarity and vulnerabilities":{
+        "p":0.7045454545,
+        "r":0.756097561,
+        "f":0.7294117647
       },
       "The backdrop of physical stuckness":{
-        "p":0.8,
-        "r":0.2666666667,
-        "f":0.4
+        "p":0.7,
+        "r":0.3333333333,
+        "f":0.4516129032
       },
-      "Existing precarity and vulnerabilities":{
-        "p":0.9142857143,
-        "r":0.7272727273,
-        "f":0.8101265823
+      "Context of blocked and derailed mobilities":{
+        "p":0.724137931,
+        "r":0.5526315789,
+        "f":0.6268656716
+      },
+      "New mobilities and migratory routes":{
+        "p":0.7,
+        "r":0.5833333333,
+        "f":0.6363636364
+      },
+      "Other":{
+        "p":0.3333333333,
+        "r":0.0555555556,
+        "f":0.0952380952
       }
     },
     "cats_macro_auc_per_type":0.0,
-    "textcat_multilabel_loss":0.0009167115
+    "textcat_multilabel_loss":0.0012436289
   }
 }

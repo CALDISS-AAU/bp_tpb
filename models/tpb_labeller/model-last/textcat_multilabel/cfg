@@ -1,10 +1,10 @@
 {
   "labels":[
-    "Context of blocked and derailed mobilities",
-    "Other",
-    "New mobilities and migratory routes",
+    "Existing precarity and vulnerabilities",
     "The backdrop of physical stuckness",
-    "Existing precarity and vulnerabilities"
+    "Context of blocked and derailed mobilities",
+    "New mobilities and migratory routes",
+    "Other"
   ],
   "threshold":0.5
 }
